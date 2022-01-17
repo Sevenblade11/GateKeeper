@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0">
+         <bottom>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="232.0" style="-fx-background-color: grey;" text="LOGIN" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <VBox prefHeight="301.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField prefHeight="25.0" prefWidth="232.0" promptText="Username" style="-fx-background-radius: 2;" />
+                  <PasswordField prefHeight="25.0" prefWidth="232.0" promptText="Password" style="-fx-background-radius: 2;" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox mnemonicParsing="false" text="Remember me" textFill="#c3c3c3" />
+                        <Text fill="#c3c3c3" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?" textAlignment="RIGHT" wrappingWidth="128.13671875">
+                           <font>
+                              <Font name="Ebrima" size="12.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </VBox>
+         </center>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="20.0" right="20.0" top="200.0" />
+         </padding></BorderPane>
+   </children>
+</AnchorPane>
