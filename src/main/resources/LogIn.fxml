@@ -9,13 +9,13 @@
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0">
          <bottom>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="232.0" style="-fx-background-color: grey;" text="LOGIN" BorderPane.alignment="CENTER" />
+            <Button fx:id="logInButton" mnemonicParsing="false" onAction="#logIn" prefHeight="25.0" prefWidth="232.0" style="-fx-background-color: grey;" text="LOGIN" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <VBox prefHeight="301.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField prefHeight="25.0" prefWidth="232.0" promptText="Username" style="-fx-background-radius: 2;" />
-                  <PasswordField prefHeight="25.0" prefWidth="232.0" promptText="Password" style="-fx-background-radius: 2;" />
+                  <TextField fx:id="usernameField" prefHeight="25.0" prefWidth="232.0" promptText="Username" style="-fx-background-radius: 2;" />
+                  <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="232.0" promptText="Password" style="-fx-background-radius: 2;" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <CheckBox mnemonicParsing="false" text="Remember me" textFill="#c3c3c3" />
