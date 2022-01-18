@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import mvc.controller.MainController;
+import mvc.model.PasswordGenerator;
 import mvc.model.ScreenType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,7 +27,7 @@ public class GateKeeperDriver extends Application {
         Parent rootNode = loader.load();
         Scene scene = new Scene(rootNode);
         stage.setScene(scene);
-        stage.setOpacity(0.90);
+        stage.setOpacity(0.98);
 
         stage.setTitle("GateKeeper");
         stage.show();

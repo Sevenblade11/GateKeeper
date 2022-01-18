@@ -23,13 +23,20 @@ public class LogInController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     @FXML
     private void logIn(){
         if(!(usernameField.getText().equals("") || passwordField.getText().equals("")))
             MainController.getInstance().switchScene(ScreenType.HOME);
+    }
+
+    @FXML
+    private void checkLogInStatus(){
+        if(!(usernameField.getText().equals("") || passwordField.getText().equals("")))
+            logInButton.setStyle("-fx-background-color: #a3d9c9");
+        else
+            logInButton.setStyle("-fx-background-color: grey");
     }
 
 }
