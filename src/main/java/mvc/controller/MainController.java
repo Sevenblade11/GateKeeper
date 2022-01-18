@@ -1,10 +1,12 @@
 package mvc.controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import mvc.model.Account;
 import mvc.model.ScreenType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,6 +20,7 @@ public class MainController implements Initializable {
     private static final Logger LOGGER = LogManager.getLogger();
     private static MainController instance = null;
     private ScreenType screenType;
+    private ObservableList<Account> accountList;
 
     @FXML
     private BorderPane rootPane;
@@ -41,7 +44,7 @@ public class MainController implements Initializable {
             }
             case HOME -> {
                 loader = new FXMLLoader(this.getClass().getResource("/HomeView.fxml"));
-                loader.setController(new HomeViewController());
+                loader.setController(new HomeViewController(accountList));
             }
             case DETAIL -> {
                 loader = new FXMLLoader(this.getClass().getResource("/DetailView.fxml"));
@@ -61,6 +64,10 @@ public class MainController implements Initializable {
         catch (IOException e){
             LOGGER.error(e.getMessage());
         }
+    }
+
+    public void setAccountList(ObservableList<Account> accountList){
+        this.accountList = accountList;
     }
 
     @Override

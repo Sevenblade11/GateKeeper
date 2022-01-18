@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0">
          <center>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HOME" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Text>
+            <TableView fx:id="accountListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <columns>
+                  <TableColumn fx:id="accountColumn" prefWidth="109.0" text="Account Name" />
+                  <TableColumn fx:id="usernameColumn" prefWidth="124.0" text="Username" />
+                  <TableColumn fx:id="passwordColumn" prefWidth="134.0" text="Password" />
+                  <TableColumn fx:id="emailColumn" prefWidth="88.0" text="Email" />
+                  <TableColumn fx:id="websiteColumn" prefWidth="134.0" text="Website" />
+               </columns></TableView>
          </center></BorderPane>
    </children>
 </AnchorPane>
