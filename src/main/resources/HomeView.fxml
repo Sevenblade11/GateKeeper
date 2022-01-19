@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -7,14 +8,38 @@
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0">
          <center>
-            <TableView fx:id="accountListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="accountListView" onContextMenuRequested="#selectAccount" onMouseClicked="#selectAccount" prefHeight="354.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <columns>
-                  <TableColumn fx:id="accountColumn" prefWidth="109.0" text="Account Name" />
-                  <TableColumn fx:id="usernameColumn" prefWidth="124.0" text="Username" />
-                  <TableColumn fx:id="passwordColumn" prefWidth="134.0" text="Password" />
-                  <TableColumn fx:id="emailColumn" prefWidth="88.0" text="Email" />
-                  <TableColumn fx:id="websiteColumn" prefWidth="134.0" text="Website" />
-               </columns></TableView>
-         </center></BorderPane>
+                  <TableColumn fx:id="accountColumn" prefWidth="128.0" text="Account Name" />
+                  <TableColumn fx:id="usernameColumn" prefWidth="105.0" text="Username" />
+                  <TableColumn fx:id="passwordColumn" prefWidth="134.0" text="Password" visible="false" />
+                  <TableColumn fx:id="emailColumn" prefWidth="185.0" text="Email" />
+                  <TableColumn fx:id="websiteColumn" prefWidth="182.0" text="Website" />
+               </columns>
+               <padding>
+                  <Insets bottom="50.0" />
+               </padding></TableView>
+         </center>
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteAccount" prefWidth="100.0" text="Delete" />
+                  <Button fx:id="editButton" mnemonicParsing="false" onAction="#editAccount" prefWidth="100.0" text="Edit" />
+                  <Button mnemonicParsing="false" onAction="#createAccount" prefWidth="100.0" text="Create" />
+               </children>
+            </HBox>
+         </bottom>
+         <top>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="searchField" promptText="Look for account" />
+                  <Button mnemonicParsing="false" text="Search" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#logOut" text="Logout">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Button>
+               </children>
+            </HBox>
+         </top></BorderPane>
    </children>
 </AnchorPane>

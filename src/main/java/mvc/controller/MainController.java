@@ -47,8 +47,10 @@ public class MainController implements Initializable {
                 loader.setController(new HomeViewController(accountList));
             }
             case DETAIL -> {
-                loader = new FXMLLoader(this.getClass().getResource("/DetailView.fxml"));
-                loader.setController(new DetailViewController());
+                if(args[0] instanceof Account) {
+                    loader = new FXMLLoader(this.getClass().getResource("/DetailView.fxml"));
+                    loader.setController(new DetailViewController((Account) args[0], accountList));
+                }
             }
         }
         if(loader != null)

@@ -6,14 +6,14 @@ import javafx.beans.property.StringProperty;
 public class Account {
     private StringProperty accountName;
     private StringProperty username;
-    private StringProperty hashedPassword;
+    private StringProperty encryptPassword;
     private StringProperty website;
     private StringProperty email;
 
     public Account(String userName, String accountName, String hashedPassword, String website, String email) {
         this.username = new SimpleStringProperty(userName);
         this.accountName = new SimpleStringProperty(accountName);
-        this.hashedPassword = new SimpleStringProperty(hashedPassword);
+        this.encryptPassword = new SimpleStringProperty(hashedPassword);
         this.website = new SimpleStringProperty(website);
         this.email = new SimpleStringProperty(email);
     }
@@ -26,12 +26,12 @@ public class Account {
         this.accountName = new SimpleStringProperty(accountName);
     }
 
-    public String getHashedPassword() {
-        return hashedPassword.get();
+    public String getEncryptPassword() {
+        return encryptPassword.get();
     }
 
-    public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = new SimpleStringProperty(hashedPassword);
+    public void setEncryptPassword(String encryptPassword) {
+        this.encryptPassword = new SimpleStringProperty(encryptPassword);
     }
 
     public String getWebsite() {
@@ -66,8 +66,8 @@ public class Account {
         this.username.set(username);
     }
 
-    public StringProperty hashedPasswordProperty() {
-        return hashedPassword;
+    public StringProperty encryptPasswordProperty() {
+        return encryptPassword;
     }
 
     public StringProperty websiteProperty() {
@@ -83,7 +83,7 @@ public class Account {
         return "Account{" +
                 "accountName=" + accountName +
                 ", username=" + username +
-                ", hashedPassword=" + hashedPassword +
+                ", hashedPassword=" + encryptPassword +
                 ", website=" + website +
                 ", email=" + email +
                 '}';

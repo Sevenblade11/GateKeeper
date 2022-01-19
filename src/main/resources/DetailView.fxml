@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="mvc.controller.DetailViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0">
+         <top>
+            <Text fx:id="infoText" strokeType="OUTSIDE" strokeWidth="0.0" text="Create / Edit Account" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="20.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </top>
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account Name:">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Text>
+                        <TextField fx:id="accountNameField" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="160.0" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+                           <HBox.margin>
+                              <Insets right="37.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="usernameField" onKeyTyped="#checkFields" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="185.0" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Website:">
+                           <HBox.margin>
+                              <Insets right="44.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="websiteField" onKeyTyped="#checkFields" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+                           <HBox.margin>
+                              <Insets right="59.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="emailField" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="235.0" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+                           <HBox.margin>
+                              <Insets right="35.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="passwordField" onKeyTyped="#checkFields" />
+                        <Button mnemonicParsing="false" onAction="#generatePassword" text="Generate">
+                           <HBox.margin>
+                              <Insets left="35.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+         <bottom>
+            <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="createUpdateButton" mnemonicParsing="false" onAction="#createUpdate" prefWidth="100.0" text="Create / Update" />
+                  <Button mnemonicParsing="false" onAction="#cancel" prefWidth="100.0" text="Cancel" />
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
 </AnchorPane>

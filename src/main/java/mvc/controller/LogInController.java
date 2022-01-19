@@ -23,6 +23,7 @@ public class LogInController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        resetView();
     }
 
     @FXML
@@ -37,6 +38,16 @@ public class LogInController implements Initializable {
             logInButton.setStyle("-fx-background-color: #a3d9c9");
         else
             logInButton.setStyle("-fx-background-color: grey");
+    }
+
+    private void resetView(){
+        usernameField.setText("");
+        usernameField.setPromptText("Username");
+
+        passwordField.setText("");
+        passwordField.setPromptText("Password");
+
+        logInButton.setStyle("-fx-background-color: grey");
     }
 
 }
