@@ -76,7 +76,12 @@ public class DetailViewController implements Initializable {
     }
 
     private void updateAccount(){
-
+        selectedAccount.setAccountName(accountNameField.getText());
+        selectedAccount.setEmail(emailField.getText());
+        selectedAccount.setUsername(usernameField.getText());
+        selectedAccount.setWebsite(websiteField.getText());
+        selectedAccount.setEncryptPassword(EncryptionDecryption.encrypt(passwordField.getText()));
+        MainController.getInstance().switchScene(ScreenType.HOME);
     }
 
     private boolean isFormatCorrect(){
