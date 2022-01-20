@@ -1,10 +1,13 @@
 package mvc.controller;
 
+import config.ConfigManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import mvc.model.EncryptionDecryption;
 import mvc.model.ScreenType;
 
 import java.net.URL;
@@ -21,6 +24,9 @@ public class LogInController implements Initializable {
     @FXML
     private PasswordField passwordField;
 
+    @FXML
+    private CheckBox saveUsername;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         resetView();
@@ -28,8 +34,17 @@ public class LogInController implements Initializable {
 
     @FXML
     private void logIn(){
-        if(!(usernameField.getText().equals("") || passwordField.getText().equals("")))
+        if(!(usernameField.getText().equals("") || passwordField.getText().equals(""))) {
             MainController.getInstance().switchScene(ScreenType.HOME);
+        }
+    }
+
+    @FXML
+    private void saveUsernameChecked(){
+        if(saveUsername.isSelected())
+            ConfigManager.writeConfig("username", usernameField.getText());
+        else
+            ConfigManager.removeProperty("username");
     }
 
     @FXML
@@ -41,13 +56,19 @@ public class LogInController implements Initializable {
     }
 
     private void resetView(){
-        usernameField.setText("");
-        usernameField.setPromptText("Username");
-
         passwordField.setText("");
         passwordField.setPromptText("Password");
 
         logInButton.setStyle("-fx-background-color: grey");
+
+        if(!(ConfigManager.readConfig("username") == null)){
+            saveUsername.setSelected(true);
+            usernameField.setText(ConfigManager.readConfig("username"));
+        }
+        else{
+            usernameField.setText("");
+            usernameField.setPromptText("Username");
+        }
     }
 
 }

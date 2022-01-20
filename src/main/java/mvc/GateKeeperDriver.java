@@ -1,5 +1,6 @@
 package mvc;
 
+import config.ConfigManager;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,10 +17,14 @@ import mvc.model.ScreenType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
+import java.net.URL;
+
 public class GateKeeperDriver extends Application {
     public static final Logger LOGGER = LogManager.getLogger();
 
     public static void main(String[] args) {
+        ConfigManager.config();
         launch(args);
 
     }
