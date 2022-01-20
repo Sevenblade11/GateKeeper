@@ -48,6 +48,15 @@ public class LogInController implements Initializable {
     }
 
     @FXML
+    private void checkUsername(){
+        if(saveUsername.isSelected()) {
+            saveUsername.setSelected(false);
+            saveUsernameChecked();
+        }
+        checkLogInStatus();
+    }
+
+    @FXML
     private void checkLogInStatus(){
         if(!(usernameField.getText().equals("") || passwordField.getText().equals("")))
             logInButton.setStyle("-fx-background-color: #a3d9c9");

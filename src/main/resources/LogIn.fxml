@@ -17,7 +17,7 @@
          <center>
             <VBox prefHeight="301.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="usernameField" onKeyTyped="#checkLogInStatus" prefHeight="25.0" prefWidth="232.0" promptText="Username" style="-fx-background-radius: 2;" />
+                  <TextField fx:id="usernameField" onKeyTyped="#checkUsername" prefHeight="25.0" prefWidth="232.0" promptText="Username" style="-fx-background-radius: 2;" />
                   <PasswordField fx:id="passwordField" onKeyTyped="#checkLogInStatus" prefHeight="25.0" prefWidth="232.0" promptText="Password" style="-fx-background-radius: 2;" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
