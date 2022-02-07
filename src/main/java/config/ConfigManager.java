@@ -40,12 +40,14 @@ public class ConfigManager {
     public static void writeConfig(String configType, String data){
         try {
             if(!isWritten(configType,data)) {
+                LOGGER.info("Attempting to write " + data + " under " + configType + ".");
                 Properties props = new Properties();
                 File configFile = new File(configPath);
                 FileWriter writer = new FileWriter(configFile);
                 props.put(configType, data);
                 props.store(writer, "Config Settings for GateKeeper");
                 writer.close();
+                LOGGER.info("Writing to config successful.");
             }
         } catch (IOException e) {
             LOGGER.error("Error has occurred with writing to GateKeeper config: " +e.getMessage());
@@ -54,6 +56,7 @@ public class ConfigManager {
 
     private static boolean isWritten(String configType, String data){
         try {
+            LOGGER.info("Checking if " +configType + " is already written.");
             Properties props = new Properties();
             FileInputStream reader = new FileInputStream(configPath);
             props.load(reader);
@@ -68,6 +71,7 @@ public class ConfigManager {
 
     public static String readConfig(String configType){
         try {
+            LOGGER.info("Reading config " +configType);
             Properties props = new Properties();
             FileInputStream reader = new FileInputStream(configPath);
             props.load(reader);
@@ -82,6 +86,7 @@ public class ConfigManager {
 
     public static void removeProperty(String configType){
         try {
+            LOGGER.info("Removing config " + configType);
             Properties props = new Properties();
             FileInputStream reader = new FileInputStream(configPath);
             FileWriter writer = new FileWriter(configPath);
@@ -90,6 +95,7 @@ public class ConfigManager {
             props.store(writer, null);
             reader.close();
             writer.close();
+            LOGGER.info("Successfully removed config " + configType);
         } catch (IOException e) {
             LOGGER.error("Error has occurred when checking GateKeeper config: " +e.getMessage());
         }

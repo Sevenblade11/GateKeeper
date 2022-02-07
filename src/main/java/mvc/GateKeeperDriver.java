@@ -7,26 +7,21 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import mvc.controller.MainController;
 import mvc.model.Account;
-import mvc.model.PasswordGenerator;
 import mvc.model.ScreenType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.io.File;
-import java.net.URL;
 
 public class GateKeeperDriver extends Application {
     public static final Logger LOGGER = LogManager.getLogger();
 
     public static void main(String[] args) {
+        LOGGER.info("Loading configuration.");
         ConfigManager.config();
+        LOGGER.info("Launching application.");
         launch(args);
-
     }
 
     @Override
