@@ -34,7 +34,7 @@ public class LogInController implements Initializable {
 
     @FXML
     private void logIn(){
-        if(!(usernameField.getText().equals("") || passwordField.getText().equals(""))) {
+        if(!(usernameField.getText().isBlank() || passwordField.getText().isBlank())) {
             MainController.getInstance().switchScene(ScreenType.HOME);
         }
     }
@@ -58,7 +58,7 @@ public class LogInController implements Initializable {
 
     @FXML
     private void checkLogInStatus(){
-        if(!(usernameField.getText().equals("") || passwordField.getText().equals("")))
+        if(!(usernameField.getText().isBlank() || passwordField.getText().isBlank()))
             logInButton.setStyle("-fx-background-color: #a3d9c9");
         else
             logInButton.setStyle("-fx-background-color: grey");

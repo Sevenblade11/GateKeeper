@@ -3,12 +3,33 @@ package mvc.model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="Accounts")
 public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Transient
+    @Column(name = "account_name", nullable = false)
     private StringProperty accountName;
+    @Transient
+    @Column(name = "username", nullable = false)
     private StringProperty username;
+    @Transient
+    @Column(name = "password", nullable = false)
     private StringProperty encryptPassword;
+    @Transient
+    @Column(name = "website")
     private StringProperty website;
+    @Transient
+    @Column(name = "email")
     private StringProperty email;
+
+    public Account() {
+
+    }
 
     public Account(String userName, String accountName, String hashedPassword, String website, String email) {
         this.username = new SimpleStringProperty(userName);
@@ -76,6 +97,14 @@ public class Account {
 
     public StringProperty emailProperty() {
         return email;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override
