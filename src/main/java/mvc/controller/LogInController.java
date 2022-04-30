@@ -1,6 +1,8 @@
 package mvc.controller;
 
+import client.SessionGateway;
 import config.ConfigManager;
+import hash.HashUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import mvc.model.EncryptionDecryption;
 import mvc.model.ScreenType;
+import mvc.model.Session;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,7 +38,11 @@ public class LogInController implements Initializable {
     @FXML
     private void logIn(){
         if(!(usernameField.getText().isBlank() || passwordField.getText().isBlank())) {
-            MainController.getInstance().switchScene(ScreenType.HOME);
+            Session session = SessionGateway.authenticate(usernameField.getText(), HashUtils.getCryptoHash(passwordField.getText(), "SHA-256"));
+            if(session != null) {
+                MainController.getInstance().setSession(session);
+                MainController.getInstance().switchScene(ScreenType.HOME);
+            }
         }
     }
 

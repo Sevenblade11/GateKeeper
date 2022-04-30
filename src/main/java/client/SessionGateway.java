@@ -2,7 +2,6 @@ package client;
 
 import mvc.model.Session;
 import org.apache.http.HttpEntity;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -14,15 +13,13 @@ import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
 public class SessionGateway {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private static String token;
-    private static final String WS_URL = "http://localhost:8080";
+    private static final String URL = "http://127.0.0.1:8080";
 
     public static Session authenticate(String userName, String hashedPassword) {
         CloseableHttpResponse response = null;
@@ -35,42 +32,37 @@ public class SessionGateway {
             credentials.put("password", hashedPassword);
             credentials.put("username", userName);
 
-            HttpPost loginRequest = new HttpPost(WS_URL + "/login");
-            String credentialsString = credentials.toString();
-            LOGGER.info("Credentials: " + credentialsString + " has been sent.");
-            StringEntity reqEntity = new StringEntity(credentialsString);
+            HttpPost loginRequest = new HttpPost(URL + "/login");
+            StringEntity reqEntity = new StringEntity(credentials.toString());
 
             loginRequest.setEntity(reqEntity);
             loginRequest.setHeader("Accept", "application/json");
             loginRequest.setHeader("Content-type", "application/json");
             response = httpclient.execute(loginRequest);
-            switch (response.getStatusLine().getStatusCode()) {
-                case 200:
-                    HttpEntity entity = response.getEntity();
-                    String strResponse = EntityUtils.toString(entity, StandardCharsets.UTF_8);
-                    //EntityUtils.consume(entity);
-                    String sessionId = "";
-                    int userId = 0;
 
-                    JSONObject json = new JSONObject(strResponse);
-                    sessionId = json.getString("sessionId");
-                    userId = json.getInt("userId");
-
-                    Session session = new Session(sessionId,userId);
-                    session.setUrl(WS_URL);
-                    LOGGER.info("Session Token: " +session.getSessionId()+".");
-                    return session;
-                case 401:
-                    LOGGER.error("Invalid credentials.");
-                default:
-                    LOGGER.error("Unknown error has occurred.");
-            }
+            return sessionResponse(response);
 
         } catch (IOException e) {
             e.printStackTrace();
-
         }
+
         return null;
     }
 
+    private static Session sessionResponse(CloseableHttpResponse response) throws IOException {
+
+        switch (response.getStatusLine().getStatusCode()) {
+            case 200 -> {
+                String strResponse = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
+                JSONObject responseJson = new JSONObject(strResponse);
+                Session session = new Session(responseJson.getString("sessionToken"), responseJson.getInt("userId"));
+                session.setUrl(URL);
+                LOGGER.info("Successfully created session token.");
+                return session;
+            }
+            case 401 -> LOGGER.error("Invalid credentials.");
+            default -> LOGGER.error("Unknown error has occurred.");
+        }
+        return null;
+    }
 }

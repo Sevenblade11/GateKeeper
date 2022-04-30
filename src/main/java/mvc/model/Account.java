@@ -11,92 +11,97 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Transient
+    @Column(name = "user_id", nullable = false)
+    private long userId;
     @Column(name = "account_name", nullable = false)
-    private StringProperty accountName;
-    @Transient
+    private String accountName;
     @Column(name = "username", nullable = false)
-    private StringProperty username;
-    @Transient
+    private String username;
     @Column(name = "password", nullable = false)
-    private StringProperty encryptPassword;
-    @Transient
+    private String encryptPassword;
     @Column(name = "website")
-    private StringProperty website;
-    @Transient
+    private String website;
     @Column(name = "email")
-    private StringProperty email;
+    private String email;
 
     public Account() {
 
     }
 
     public Account(String userName, String accountName, String hashedPassword, String website, String email) {
-        this.username = new SimpleStringProperty(userName);
-        this.accountName = new SimpleStringProperty(accountName);
-        this.encryptPassword = new SimpleStringProperty(hashedPassword);
-        this.website = new SimpleStringProperty(website);
-        this.email = new SimpleStringProperty(email);
+        this.username = userName;
+        this.accountName = accountName;
+        this.encryptPassword = hashedPassword;
+        this.website = website;
+        this.email = email;
     }
 
     public String getAccountName() {
-        return accountName.get();
-    }
-
-    public void setAccountName(String accountName) {
-        this.accountName = new SimpleStringProperty(accountName);
-    }
-
-    public String getEncryptPassword() {
-        return encryptPassword.get();
-    }
-
-    public void setEncryptPassword(String encryptPassword) {
-        this.encryptPassword = new SimpleStringProperty(encryptPassword);
-    }
-
-    public String getWebsite() {
-        return website.get();
-    }
-
-    public void setWebsite(String website) {
-        this.website = new SimpleStringProperty(website);
-    }
-
-    public String getEmail() {
-        return email.get();
-    }
-
-    public void setEmail(String email) {
-        this.email = new SimpleStringProperty(email);
-    }
-
-    public StringProperty accountNameProperty() {
         return accountName;
     }
 
-    public String getUsername() {
-        return username.get();
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
-    public StringProperty usernameProperty() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username.set(username);
-    }
-
-    public StringProperty encryptPasswordProperty() {
+    public String getEncryptPassword() {
         return encryptPassword;
     }
 
-    public StringProperty websiteProperty() {
+    public void setEncryptPassword(String encryptPassword) {
+        this.encryptPassword = encryptPassword;
+    }
+
+    public String getWebsite() {
         return website;
     }
 
-    public StringProperty emailProperty() {
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public StringProperty accountNameProperty() {
+        return new SimpleStringProperty(accountName);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public StringProperty usernameProperty() {
+        return new SimpleStringProperty(username);
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public StringProperty encryptPasswordProperty() {
+        return new SimpleStringProperty(encryptPassword);
+    }
+
+    public StringProperty websiteProperty() {
+        return new SimpleStringProperty(website);
+    }
+
+    public StringProperty emailProperty() {
+        return new SimpleStringProperty(email);
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public long getId() {

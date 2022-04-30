@@ -1,5 +1,6 @@
 package mvc.controller;
 
+import client.SessionGateway;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import mvc.model.Account;
 import mvc.model.ScreenType;
+import mvc.model.Session;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,6 +23,7 @@ public class MainController implements Initializable {
     private static MainController instance = null;
     private ScreenType screenType;
     private ObservableList<Account> accountList;
+    private Session session;
 
     @FXML
     private BorderPane rootPane;
@@ -66,6 +69,14 @@ public class MainController implements Initializable {
         catch (IOException e){
             LOGGER.error(e.getMessage());
         }
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
     }
 
     public void setAccountList(ObservableList<Account> accountList){
