@@ -3,7 +3,7 @@ package mvc.model;
 import java.util.Random;
 
 /**
- * Taken from https://github.com/Sevenblade11/Password-Generator.git
+ * Taken from https://github.com/njenkins14/Password-Generator.git
  * TODO Probably needs some clean up and fine-tuning in the future.
  */
 public class PasswordGenerator {

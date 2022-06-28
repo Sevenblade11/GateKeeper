@@ -6,6 +6,10 @@ import org.apache.logging.log4j.Logger;
 import java.io.*;
 import java.util.Properties;
 
+/**
+ * Creates the config directory within app data.
+ * Deals with saving various settings within a config file.
+ */
 public class ConfigManager {
     private static final String path = System.getenv("LOCALAPPDATA");
     private static final String configPath = path + "\\GateKeeper\\config.properties";
@@ -37,6 +41,11 @@ public class ConfigManager {
         }
     }
 
+    /**
+     * Writes a config with the given config type and data associated with the config.
+     * @param configType Configuration type / name
+     * @param data Data given for the config name
+     */
     public static void writeConfig(String configType, String data){
         try {
             if(!isWritten(configType,data)) {
@@ -54,6 +63,13 @@ public class ConfigManager {
         }
     }
 
+    /**
+     * Checks to see if the config type has already been written. This is from checking to see if the config type
+     * already exists within the config file.
+     * @param configType
+     * @param data
+     * @return
+     */
     private static boolean isWritten(String configType, String data){
         try {
             LOGGER.info("Checking if " +configType + " is already written.");
@@ -69,6 +85,11 @@ public class ConfigManager {
         return false;
     }
 
+    /**
+     * Reads the data for the specified config type.
+     * @param configType Config type to retrieve the data from.
+     * @return Returns the data found at the config type (String), or returns null if nothing was found.
+     */
     public static String readConfig(String configType){
         try {
             LOGGER.info("Reading config " +configType);

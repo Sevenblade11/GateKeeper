@@ -13,6 +13,11 @@ import mvc.model.ScreenType;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * This controller deals with the detail view for accounts.
+ * This will show more information for the selected account, and will allow the user to change
+ * any info if needed, such as generating a new password for this account.
+ */
 public class DetailViewController implements Initializable {
 
     private Account selectedAccount;

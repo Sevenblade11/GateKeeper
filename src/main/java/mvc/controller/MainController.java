@@ -17,6 +17,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controls the switching between views. Singleton object.
+ *
+ * Keeps track of any important information for views, such as session token.
+ */
 public class MainController implements Initializable {
 
     private static final Logger LOGGER = LogManager.getLogger();
@@ -38,6 +43,15 @@ public class MainController implements Initializable {
         return instance;
     }
 
+    /**
+     * Switches the views based on screen type. Various screen types will require different
+     * parameters.
+     * Login - No additional parameters needed.
+     * Home - No additional parameters needed.
+     * Detail - Specific account to show details about.
+     * @param screenType The screen needed to swap to.
+     * @param args Any information that the screen(s) need.
+     */
     public void switchScene(ScreenType screenType, Object ... args){
         FXMLLoader loader = null;
         switch(screenType){

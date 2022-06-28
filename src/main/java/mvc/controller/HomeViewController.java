@@ -10,6 +10,10 @@ import mvc.model.ScreenType;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Home controller; deals with the list view of accounts for this user.
+ * If an account is clicked, this view switches to detail.
+ */
 public class HomeViewController implements Initializable {
 
     private ObservableList<Account> accountList;

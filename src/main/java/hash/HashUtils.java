@@ -6,8 +6,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class HashUtils {
 
-    // stolen from: https://medium.com/@TechExpertise/java-cryptographic-hash-functions-a7ae28f3fa42
-    //Function to calculate the Cryptographic hash value of an input String and the provided Digest algorithm
+    // 'stolen' (with love) from: https://medium.com/@TechExpertise/java-cryptographic-hash-functions-a7ae28f3fa42
+    // Function to calculate the Cryptographic hash value of an input String and the provided Digest algorithm
     public static String getCryptoHash(String input, String algorithm) {
         try {
             //MessageDigest classes Static getInstance method is called with MD5 hashing

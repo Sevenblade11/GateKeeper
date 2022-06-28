@@ -15,6 +15,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Deals with log on credentials.
+ */
 public class SessionGateway {
 
     private static final Logger LOGGER = LogManager.getLogger();
