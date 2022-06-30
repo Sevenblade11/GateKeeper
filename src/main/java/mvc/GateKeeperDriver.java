@@ -1,6 +1,7 @@
 package mvc;
 
 import config.ConfigManager;
+import exceptions.Alerts;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,9 @@ import mvc.model.Account;
 import mvc.model.ScreenType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.service.spi.ServiceException;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -32,7 +36,12 @@ public class GateKeeperDriver extends Application {
         LOGGER.info("Loading configuration.");
         ConfigManager.config();
         LOGGER.info("Launching Spring.");
+        try{
         SpringApplication.run(GateKeeperDriver.class, args);
+        }catch(BeanCreationException e){
+            LOGGER.fatal("Could not connect to database.");
+            return;
+        }
         LOGGER.info("Launching application.");
         launch(args);
     }
